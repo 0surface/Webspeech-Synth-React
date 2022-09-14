@@ -1,0 +1,42 @@
+{
+  "name": "@0surface/webspeech-synth-react",
+  "version": "0.0.1",
+  "description": "Web speech API wrapper for react",
+  "keywords": [
+    "react",
+    "speak",
+    "speech synthesis",
+    "speechsynthesis",
+    "text to speech",
+    "tts",
+    "react-tts"
+  ],
+  "author": "0surface",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "files": [
+    "lib/**/*"
+  ],
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build": "rm -rf lib && babel --out-dir lib --ignore **/*.spec.js,**/*.test.js --source-maps inline src/",
+    "clean": "rimraf lib",
+    "start": "npm run build -- --watch"
+  },
+  "peerDependencies": {
+    "react": ">= 18.2.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.19.0",
+    "short-uuid": "^4.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.0",
+    "@babel/preset-react": "^7.18.6",
+    "parcel": "^2.7.0",
+    "process": "^0.11.10",
+    "react-dom": "^18.2.0"
+  }
+}
