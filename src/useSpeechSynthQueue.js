@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo, useState, useEffect } from 'react'
 
 export function useSpeechSynthQueue(id, segmentId, text, pitch, rate, voice) {
   const [queued, setQueued] = useState([])
@@ -20,7 +20,10 @@ export function useSpeechSynthQueue(id, segmentId, text, pitch, rate, voice) {
       const getVoices = window.speechSynthesis.getVoices()
       setVoices(getVoices)
 
-      setEnglishVoices(voices.filter((v) => v.lang.includes('en')))
+      const _englishVoices = getVoices.filter(function (v) {
+        return v.lang.includes('en')
+      })
+      setEnglishVoices(_englishVoices)
     }
   }, [synth])
 
@@ -34,13 +37,21 @@ export function useSpeechSynthQueue(id, segmentId, text, pitch, rate, voice) {
     }
   }, [synth, voices])
 
-  const addToQueue = useCallback(() => {}, [])
+  const addToQueue = useCallback(() => {
+    console.log('addToQueue')
+  }, [])
 
-  const playQueue = useCallback(() => {}, [])
+  const playQueue = useCallback(() => {
+    console.log('playQueue')
+  }, [])
 
-  const pauseQueue = useCallback(() => {}, [])
+  const pauseQueue = useCallback(() => {
+    console.log('pauseQueue')
+  }, [])
 
-  const clearQueue = useCallback(() => {}, [])
+  const clearQueue = useCallback(() => {
+    console.log('clearQueue')
+  }, [])
 
   return {
     addToQueue,

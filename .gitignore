@@ -1,2 +1,9 @@
+/dist
+/.parcel-cache
 /lib
 /node_modules
+dist/
+.DS_Store
+.parcel-cache
+.eslintcache
+node_modules

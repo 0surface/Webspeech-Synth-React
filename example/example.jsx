@@ -1,7 +1,14 @@
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import React from 'react'
-//import { SpeechSynth } from '../src'
+import { SpeechSynthQueue } from '../src'
 
-// ReactDOM.render(<SpeechSynth text={'Text to read'} />, document.getElementById('main'))
+const root = ReactDOM.createRoot(document.getElementById('main'))
+root.render(
+  <React.StrictMode>
+    <SpeechSynthQueue />
+  </React.StrictMode>
+)
 
-ReactDOM.render(<button>Hi</button>, document.getElementById('main'))
+//ReactDOM.render(<SpeechSynthUI />, document.getElementById('main'))
+
+//ReactDOM.render(<button>Hi</button>, document.getElementById('main'))
