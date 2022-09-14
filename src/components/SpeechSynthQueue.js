@@ -1,9 +1,9 @@
 import { SpeechSynthQueueProvider } from '../SpeechSynthQueueProvider'
 import { SpeechSynthUI } from './SpeechSynthUI'
 
-export function SpeechSynthQueue({ text }) {
+export function SpeechSynthQueue({ corpus }) {
   return (
-    <SpeechSynthQueueProvider text={text}>
+    <SpeechSynthQueueProvider corpus={corpus}>
       <SpeechSynthUI />
     </SpeechSynthQueueProvider>
   )

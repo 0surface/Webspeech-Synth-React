@@ -10,6 +10,7 @@ const SpeechSynthQueueContext = createContext({
   addToQueue: () => {},
   playQueue: () => {},
   pauseQueue: () => {},
+  resumeQueue: () => {},
   clearQueue: () => {},
 })
 
@@ -17,9 +18,10 @@ export function useSpeechSynthQueueProvider() {
   return useContext(SpeechSynthQueueContext)
 }
 
-export function SpeechSynthQueueProvider({ text, children }) {
+export function SpeechSynthQueueProvider({ corpus, children }) {
   const {
     queued,
+    utternaceQueue,
     speech,
     supported,
     voices,
@@ -27,13 +29,15 @@ export function SpeechSynthQueueProvider({ text, children }) {
     addToQueue,
     playQueue,
     pauseQueue,
+    resumeQueue,
     clearQueue,
-  } = useSpeechSynthQueue(text)
+  } = useSpeechSynthQueue(corpus)
 
   return (
     <SpeechSynthQueueContext.Provider
       value={{
         queued,
+        utternaceQueue,
         speech,
         supported,
         voices,
@@ -41,6 +45,7 @@ export function SpeechSynthQueueProvider({ text, children }) {
         addToQueue,
         playQueue,
         pauseQueue,
+        resumeQueue,
         clearQueue,
       }}
     >

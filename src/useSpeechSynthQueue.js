@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState, useEffect } from 'react'
+import { JsonSegmenter } from './speechSynthUtil'
 
-export function useSpeechSynthQueue(id, segmentId, text, pitch, rate, voice) {
+export function useSpeechSynthQueue(corpus) {
   const [queued, setQueued] = useState([])
   const [voices, setVoices] = useState([])
   const [englishVoices, setEnglishVoices] = useState([])
@@ -30,33 +31,64 @@ export function useSpeechSynthQueue(id, segmentId, text, pitch, rate, voice) {
   useEffect(() => {
     if (synth && voices) {
       try {
-        setQueued({ id, segmentId, text, pitch, rate, voice })
+        const segmentArr = JsonSegmenter(corpus, englishVoices)
+        segmentArr && segmentArr.length > 0 && setQueued(segmentArr)
       } catch (err) {
         console.error('useSpeechSynthQueue::', err)
       }
     }
-  }, [synth, voices])
+  }, [synth, voices, voices, englishVoices])
 
   const addToQueue = useCallback(() => {
     console.log('addToQueue')
-  }, [])
+    try {
+      // Firefox
+      if (queued.length < 1) {
+        const segmentArr = JsonSegmenter(corpus, englishVoices)
+        segmentArr && segmentArr.length > 0 && setQueued(segmentArr)
+      }
+    } catch (err) {
+      console.error('Add to queue::', err)
+    }
+  }, [queued])
 
-  const playQueue = useCallback(() => {
-    console.log('playQueue')
-  }, [])
+  const playQueue = useCallback(
+    (e) => {
+      e.preventDefault()
+      console.log('playQueue:event', e)
+      console.log('state check', englishVoices)
+      console.log('queued', queued[0])
+
+      synth?.cancel()
+
+      queued.forEach((q) => {
+        const ut = q.utterance
+        console.log('current Utternace::', q.utterance)
+        synth?.speak(q.utterance)
+      })
+    },
+    [queued, synth]
+  )
 
   const pauseQueue = useCallback(() => {
     console.log('pauseQueue')
-  }, [])
+    synth?.pause()
+  }, [queued, synth])
+
+  const resumeQueue = useCallback(() => {
+    console.log('resumeQueue')
+    synth?.resume()
+  }, [queued, synth])
 
   const clearQueue = useCallback(() => {
     console.log('clearQueue')
-  }, [])
+  }, [queued, synth])
 
   return {
     addToQueue,
     playQueue,
     pauseQueue,
+    resumeQueue,
     clearQueue,
     queued,
     speech: {
