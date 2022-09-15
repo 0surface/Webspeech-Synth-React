@@ -78,6 +78,8 @@ const JsonSegmenter = (
       arr.push({
         id: IdMaker(),
         segmentId: item.id,
+        isUttered: false,
+        isPaused: false,
         text: chunk,
         utterance: ut,
       })

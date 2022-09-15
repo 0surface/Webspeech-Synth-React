@@ -65,6 +65,7 @@ export function useSpeechSynthQueue(corpus) {
         const ut = q.utterance
         console.log('current Utternace::', q.utterance)
         synth?.speak(q.utterance)
+        q.isPlayed = true
       })
     },
     [queued, synth]
@@ -82,6 +83,8 @@ export function useSpeechSynthQueue(corpus) {
 
   const clearQueue = useCallback(() => {
     console.log('clearQueue')
+    synth?.cancel()
+    setQueued([])
   }, [queued, synth])
 
   return {

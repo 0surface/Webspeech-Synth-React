@@ -10,7 +10,6 @@ export function SpeechSynthButton({ handler, bgcolor, children }) {
         borderRadius: '12px',
         textAlign: 'center',
         textDecoration: 'none',
-        display: 'inline-block',
         fontSize: '16px',
       }}
       onClick={handler}
