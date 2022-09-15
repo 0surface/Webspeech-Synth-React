@@ -3,10 +3,11 @@ export function SpeechSynthButton({ handler, bgcolor, children }) {
     <button
       style={{
         display: 'inline-block',
-        backgroundColor: bgcolor /*'#4CAF50'  Green */,
+        backgroundColor: bgcolor,
         border: 'solid',
         color: 'white',
-        padding: '15px 32px',
+        padding: '10px 22px',
+        borderRadius: '12px',
         textAlign: 'center',
         textDecoration: 'none',
         display: 'inline-block',

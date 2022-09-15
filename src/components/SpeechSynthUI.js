@@ -58,57 +58,32 @@ export function SpeechSynthUI() {
 
   let content = (
     <>
-      {supportStatus}
+      <div style={{ width: '70%' }}>
+        {supportStatus}
 
-      <div style={{ border: 'solid 1px', padding: '3px', margin: '3px' }}>
-        <SpeechSynthButton handler={addToQueue} bgcolor={'grey'}>
-          ADD
-        </SpeechSynthButton>
-        <SpeechSynthButton handler={playQueue} bgcolor={'#4CAF50'}>
-          PLAY
-        </SpeechSynthButton>
-        <SpeechSynthButton handler={pauseQueue} bgcolor={'orange'}>
-          PAUSE
-        </SpeechSynthButton>
-        <SpeechSynthButton handler={resumeQueue} bgcolor={'lime'}>
-          RESUME
-        </SpeechSynthButton>
-        <SpeechSynthButton handler={clearQueue} bgcolor={'red'}>
-          CLEAR
-        </SpeechSynthButton>
+        <div style={{ border: 'solid 1px', padding: '3px', margin: '3px' }}>
+          <SpeechSynthButton handler={addToQueue} bgcolor={'grey'}>
+            ADD
+          </SpeechSynthButton>
+          <SpeechSynthButton handler={playQueue} bgcolor={'#4CAF50'}>
+            PLAY
+          </SpeechSynthButton>
+          <SpeechSynthButton handler={pauseQueue} bgcolor={'orange'}>
+            PAUSE
+          </SpeechSynthButton>
+          <SpeechSynthButton handler={resumeQueue} bgcolor={'lime'}>
+            RESUME
+          </SpeechSynthButton>
+          <SpeechSynthButton handler={clearQueue} bgcolor={'red'}>
+            CLEAR
+          </SpeechSynthButton>
 
-        {stateLog}
-        {/* 
-        {console.log('START STATE ====================')}
-        {console.log('SUPPORTED', supported)}
-        {console.log('SPEECH', speech)}
-        {console.log('QUEUED', queued)}
-        {console.log('VOICES', voices)}
-        {console.log('ENGLSIH_VOICES', englishVoices)}
-        {console.log('UTTERANCE_QUEUE', utternaceQueue)}
-        {console.log('END STATE ====================')} */}
+          {process.env.NODE_ENV === 'development' && stateLog}
+        </div>
+        {voiceStatus}
       </div>
-      {voiceStatus}
     </>
   )
 
   return content
-}
-
-{
-  /* <div style={{ flex }}>
-        <div>
-          <button onClick={() => console.log('Do Button')}>Do</button>
-        </div>
-        <button onClick={addToQueue}>Add</button>
-        <button onClick={playQueue}>Play</button>
-        <button onClick={pauseQueue}>Pause</button>
-        <button onClick={clearQueue}>Clear</button>
-        <div>
-          {speech?.voice && speech.voices.length ? (
-            <div>{voices.length}</div>
-          ) : null}{' '}
-        </div>
-      </div>
-    </> */
 }
