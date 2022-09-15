@@ -1,5 +1,5 @@
 {
-  "name": "@0surface/webspeech-synth-react",
+  "name": "webspeech-synth-react",
   "version": "0.0.1",
   "description": "Web speech API wrapper for react",
   "keywords": [
@@ -11,6 +11,7 @@
     "tts",
     "react-tts"
   ],
+  "public": "true",
   "author": "0surface",
   "license": "MIT",
   "main": "lib/index.js",
