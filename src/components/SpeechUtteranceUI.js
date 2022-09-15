@@ -8,7 +8,6 @@ export function SpeechUtteranceUI() {
 
   let utteranceContent = (
     <div style={{ border: 'solid 1px', padding: '3px', margin: '3px' }}>
-      {console.log('SpeechUtteranceUI::toggle', toggle)}
       <div>
         <button
           style={{

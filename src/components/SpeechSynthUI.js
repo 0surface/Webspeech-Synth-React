@@ -1,11 +1,12 @@
 import { useSpeechSynthQueueProvider } from '../SpeechSynthQueueProvider'
 import { SpeechSynthButton } from './SpeechSynthButton'
-import { SpeechUtteranceDisplay } from './SpeechUtteranceDisplay'
+import { SpeechUtteranceUI } from './SpeechUtteranceUI'
+import { SpeechSynthSupportUI } from './SpeechSynthSupportUI'
+import { SpeechSynthVoiceUI } from './SpeechSynthVoiceUI'
 
 export function SpeechSynthUI() {
   const {
     queued,
-    utternaceQueue,
     speech,
     supported,
     voices,
@@ -18,40 +19,6 @@ export function SpeechSynthUI() {
   } = useSpeechSynthQueueProvider()
 
   if (!supported) return null
-
-  let supportStatus = (
-    <div style={{ border: 'solid 1px', padding: '3px', margin: '3px' }}>
-      <h3>
-        <p
-          style={{
-            color: supported ? 'green' : 'red',
-            alignContent: 'center',
-            fontWeight: 'bold',
-          }}
-        >
-          {supported ? 'Speech Synth On' : 'Browser Can Speech Synthesise'}
-        </p>
-      </h3>
-    </div>
-  )
-
-  let voiceStatus = (
-    <div
-      style={{
-        border: 'solid 1px',
-        padding: '2px',
-        margin: '2px',
-      }}
-    >
-      <p>
-        Browser Voices :
-        {speech?.voices && speech.voices.length ? voices.length : 'None'}
-      </p>
-      <h4>
-        <p>English Voices {englishVoices.map((ev) => `[ ${ev.name} ]`)}</p>
-      </h4>
-    </div>
-  )
 
   let buttonContent = (
     <div style={{ border: 'solid 1px', padding: '3px', margin: '3px' }}>
@@ -73,55 +40,6 @@ export function SpeechSynthUI() {
     </div>
   )
 
-  // let utteranceContent = (
-  //   <div style={{ border: 'solid 1px', padding: '3px', margin: '3px' }}>
-  //     <div>
-  //       <button onClick={() => setUtteranceShow(!utteranceShow)}>
-  //         {utteranceShow ? 'HIDE' : 'SHOW'}
-  //       </button>
-  //     </div>
-  //     {utteranceShow && (
-  //       <ul>
-  //         {queued?.length > 0 &&
-  //           queued?.map((q) => (
-  //             <li
-  //               key={q.id}
-  //               style={{
-  //                 border: 'solid 1px',
-  //                 textAlign: 'left',
-  //                 margin: '5px',
-  //               }}
-  //             >
-  //               <div
-  //                 style={{
-  //                   backgroundColor: 'grey',
-  //                   width: '50%',
-  //                   alignItems: 'center',
-  //                   textAlign: 'center',
-  //                 }}
-  //               >
-  //                 {q.id} --- {q.segmentId}
-  //               </div>
-  //               <div style={{ margin: '2px' }}>{q.text}</div>
-  //               <div
-  //                 style={{
-  //                   display: 'inline-block',
-  //                   margin: '3px',
-  //                   padding: '3px',
-  //                 }}
-  //               >
-  //                 <button>{q.utterance?.pitch}</button>
-  //                 <button>{q.utterance?.rate}</button>
-  //                 <button>{q.utterance?.voice?.name}</button>
-  //                 <button>{q.isuttered ? 'DONE' : 'PENDING'}</button>
-  //               </div>
-  //             </li>
-  //           ))}
-  //       </ul>
-  //     )}
-  //   </div>
-  // )
-
   let stateLog = [
     console.log('START STATE ===================='),
     console.log('SUPPORTED', supported),
@@ -132,18 +50,23 @@ export function SpeechSynthUI() {
     console.log('END STATE ===================='),
   ]
 
-  let content = (
+  return (
     <>
-      <div style={{ width: '70%' }}>
-        {supportStatus}
-        {buttonContent}
+      <div
+        style={{
+          width: '70%',
+          border: 'solid 2px',
+          borderRadius: '12px',
+          margin: '5px',
+          padding: '5px',
+        }}
+      >
         {process.env.NODE_ENV === 'development' && stateLog}
-        {voiceStatus}
-        {/* {utteranceContent} */}
-        <SpeechUtteranceDisplay queued={queued} />
+        <SpeechSynthSupportUI />
+        {buttonContent}
+        <SpeechSynthVoiceUI />
+        <SpeechUtteranceUI />
       </div>
     </>
   )
-
-  return content
 }
