@@ -9,7 +9,3 @@ root.render(
     <SpeechSynthQueue corpus={data} />
   </React.StrictMode>
 )
-
-//ReactDOM.render(<SpeechSynthUI />, document.getElementById('main'))
-
-//ReactDOM.render(<button>Hi</button>, document.getElementById('main'))
