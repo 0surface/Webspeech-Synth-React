@@ -4,12 +4,18 @@ import {
   SpeechSynthUI,
   SpeechSynthButton,
   SpeechSynthQueue,
+  SpeechUtteranceUI,
+  SpeechSynthSupportUI,
+  SpeechSynthVoiceUI,
 } from './components'
 
 export {
   useSpeechSynthQueue,
   SpeechSynthQueueProvider,
+  SpeechSynthQueue,
   SpeechSynthUI,
   SpeechSynthButton,
-  SpeechSynthQueue,
+  SpeechUtteranceUI,
+  SpeechSynthSupportUI,
+  SpeechSynthVoiceUI,
 }

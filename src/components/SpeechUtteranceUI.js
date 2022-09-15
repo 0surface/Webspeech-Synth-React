@@ -1,16 +1,28 @@
 import { useState } from 'react'
+import { useSpeechSynthQueueProvider } from '../SpeechSynthQueueProvider'
 
-export function SpeechUtteranceDisplay(queued) {
-  const [utteranceShow, setUtteranceShow] = useState(false)
+export function SpeechUtteranceUI() {
+  const [toggle, setToggle] = useState(false)
+
+  const { queued } = useSpeechSynthQueueProvider()
 
   let utteranceContent = (
     <div style={{ border: 'solid 1px', padding: '3px', margin: '3px' }}>
+      {console.log('SpeechUtteranceUI::toggle', toggle)}
       <div>
-        <button onClick={() => setUtteranceShow(!utteranceShow)}>
-          {utteranceShow ? 'HIDE' : 'SHOW'}
+        <button
+          style={{
+            borderRadius: '8px',
+            margin: '4px 4px',
+            padding: '4px 4px',
+            width: '10%',
+          }}
+          onClick={() => setToggle(!toggle)}
+        >
+          {toggle ? 'HIDE' : 'SHOW'}
         </button>
       </div>
-      {utteranceShow && (
+      {toggle && (
         <ul>
           {queued?.length > 0 &&
             queued?.map((q) => (
