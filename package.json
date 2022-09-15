@@ -33,6 +33,7 @@
     "short-uuid": "^4.2.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.18.10",
     "@babel/core": "^7.19.0",
     "@babel/preset-react": "^7.18.6",
     "parcel": "^2.7.0",
