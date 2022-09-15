@@ -21,7 +21,6 @@ export function useSpeechSynthQueueProvider() {
 export function SpeechSynthQueueProvider({ corpus, children }) {
   const {
     queued,
-    utternaceQueue,
     speech,
     supported,
     voices,
@@ -37,7 +36,6 @@ export function SpeechSynthQueueProvider({ corpus, children }) {
     <SpeechSynthQueueContext.Provider
       value={{
         queued,
-        utternaceQueue,
         speech,
         supported,
         voices,

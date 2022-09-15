@@ -88,11 +88,6 @@ export function useSpeechSynthQueue(corpus) {
   }, [queued, synth])
 
   return {
-    addToQueue,
-    playQueue,
-    pauseQueue,
-    resumeQueue,
-    clearQueue,
     queued,
     speech: {
       synth: synth,
@@ -101,5 +96,10 @@ export function useSpeechSynthQueue(corpus) {
     supported,
     voices,
     englishVoices,
+    addToQueue,
+    playQueue,
+    pauseQueue,
+    resumeQueue,
+    clearQueue,
   }
 }
