@@ -2,6 +2,10 @@
 
 React wrapper Hooks and components that wrap the Web Speech API's Speech Synthesis interface.
 
+- Uses an internal queue to manage speech utterances.
+- Segments large text into chunks to avoid abrupt voice cutoff on some browsers after ~15 seconds.
+- Uses different voices, when available in the browser, for text labeled with different ids.
+
 ### HOW TO USE
 
 Add to your project from npm
@@ -22,8 +26,9 @@ function App() {
 
 ### DEPENDENCIES
 
-`short-uuid` and `@babel/runtime`
+`short-uuid` - To generate random alphanumeric string for id
 
 ### TODO
 
 - Display, track the current utterance that is voiced out by the web browser on the UI
+- Remove short-uuid dependency
