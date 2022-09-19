@@ -32,7 +32,7 @@ export function useSpeechSynthQueue(corpus) {
   useEffect(() => {
     if (synth && voices && englishVoices) {
       try {
-        const arr = transformCorpus(corpus, englishVoices)
+        const arr = transformCorpus(corpus, englishVoices, 180)
         arr && arr.length > 0 && setQueued(arr)
       } catch (err) {
         console.error('useSpeechSynthQueue::', err)
@@ -44,7 +44,7 @@ export function useSpeechSynthQueue(corpus) {
     console.log('addToQueue')
     try {
       // Firefox
-      const arr = transformCorpus(corpus, englishVoices)
+      const arr = transformCorpus(corpus, englishVoices, 150)
       arr && arr.length > 0 && setQueued(arr)
     } catch (err) {
       console.error('Add to queue::', err)
