@@ -24,9 +24,14 @@ function App() {
 
 ```
 
+### EXAMPLE
+
+To run the included example:
+`sh example/run.sh`
+
 ### DEPENDENCIES
 
-`short-uuid` - To generate random alphanumeric string for id
+`react >= 18.2.0`
 
 ### TODO
 
