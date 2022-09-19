@@ -4,3 +4,4 @@ lib/
 .parcel-cache
 .eslintcache
 node_modules
+.env
