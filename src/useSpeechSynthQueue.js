@@ -30,7 +30,7 @@ export function useSpeechSynthQueue(corpus) {
   }, [synth])
 
   useEffect(() => {
-    if (synth && voices) {
+    if (synth && voices && englishVoices) {
       try {
         const arr = transformCorpus(corpus, englishVoices)
         arr && arr.length > 0 && setQueued(arr)
