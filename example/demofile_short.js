@@ -5,18 +5,6 @@ export const data = [
 
     At the start of the pandemic, I drove to his apartment. I didn’t know when we were going to be called back to the office, so I kept my apartment thinking things might calm down in a few weeks. I ended up staying with him for a few months leaving only because I needed to check on my apartment.
     
-    Throughout the pandemic I frequently stayed with him for extended amounts of time. I kept my apartment because my job never made a call on going fully remote and because my partner and I fight sometimes and I sometimes had to leave because he wanted me to. If he were reading this he would insist I mention that I did not always leave when we fought, so I will add that if the weather was bad or if it was late, he would let me stay the night then leave the following day if we were still having problems.
-    
-    Sometimes when we would fight he would comment about me living with him “rent free,” and I would argue that I did not live with him. I had my own place and was living out of a suitcase to visit him for extended periods of time because it was the only way we would see each other since he never visited me. This was the only time we talked about rent.
-    
-    Because my partner has almost no work experience, he will be making significantly less than I do in the job he starts tomorrow (assuming he takes it as he feels it’s not worth his time). He now feels that I owe him half the rent and utilities he paid over the last two years because he was “supporting me.” I just gave up my apartment and he feels I should also pay most of the rent going forward because I make more than him.
-    
-    Despite making almost $0 throughout the pandemic, my partner had two hair transplants, lived in a luxury apartment complex in the most expensive city in our state, and bought a new car in the same time frame. He paid for this with a combination of money received from his parents and a settlement from a car accident in his teens. And I think he genuinely feels that he is more deserving of my money than I am.
-    
-    Tl;dr: I stayed with my boyfriend throughout most of the pandemic, but kept my apartment. My boyfriend is now saying I owe him two years of rent.
-    
-    EDIT: He just apologized and said he was just having a bad day. This is the second time he’s mentioned this though. I’m not sure how serious he really is about it, but it seems like he may just be saying it because he feels bad about where he is in life.
-    
     Thanks everyone!`,
   },
   {
