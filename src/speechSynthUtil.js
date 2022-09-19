@@ -1,8 +1,16 @@
-import short from 'short-uuid'
-
-const IdMaker = () => {
-  return short().new()
+/**
+ * See link for more details on this function
+ * https://stackoverflow.com/questions/105034/how-do-i-create-a-guid-uuid
+ * @returns
+ */
+const uuidv4 = () => {
+  return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
+    (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4))))
+      .toString(16)
+      .substring(0, 4)
+  )
 }
+
 const RangePicker = (min = 1, max = 1.2) => {
   return Math.random() * (max - min) + min
 }
@@ -76,7 +84,7 @@ const JsonSegmenter = (
       ut.lang = lang
 
       arr.push({
-        id: IdMaker(),
+        id: uuidv4(),
         segmentId: item.id,
         isUttered: false,
         isPaused: false,
@@ -88,4 +96,4 @@ const JsonSegmenter = (
   return arr
 }
 
-export { RangePicker, IdMaker, TextChunker, JsonSegmenter }
+export { RangePicker, TextChunker, JsonSegmenter }

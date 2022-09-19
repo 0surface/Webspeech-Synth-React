@@ -34,9 +34,7 @@
   "peerDependencies": {
     "react": ">= 18.2.0"
   },
-  "dependencies": {
-    "short-uuid": "^4.2.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "parcel": "^2.7.0",
     "process": "^0.11.10",
