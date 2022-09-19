@@ -30,5 +30,10 @@ function App() {
 
 ### TODO
 
+- Create basic, opinionted, lite versions of the UI widget
 - Display, track the current utterance that is voiced out by the web browser on the UI
 - Remove short-uuid dependency
+
+### ATTRIBUTION
+
+The code layout was inspired by [react-speech-synth](https://github.com/dblodorn/react-speech-synth) and [react-say](https://github.com/compulim/react-say)
