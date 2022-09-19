@@ -25,7 +25,7 @@
   "scripts": {
     "build": "parcel build",
     "prettier": "prettier src --write",
-    "prepack": "npm rub clean && npm run prettier",
+    "prepack": "npm run clean && npm run prettier",
     "clean": "rm -rf ./dist",
     "cleanexample": "rm -rf ./dist",
     "example": "npx parcel example/index.html",
