@@ -53,18 +53,10 @@ export function useSpeechSynthQueue(corpus) {
 
   const playQueue = useCallback(
     (e) => {
-      e.preventDefault()
-      console.log('playQueue:event', e)
-      console.log('state check', englishVoices)
-      console.log('queued', queued[0])
-
       synth?.cancel()
 
       queued.forEach((q) => {
-        const ut = q.utterance
-        console.log('current Utternace::', q.utterance)
         synth?.speak(q.utterance)
-        q.isPlayed = true
       })
     },
     [queued, synth]
