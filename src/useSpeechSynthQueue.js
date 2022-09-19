@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useState, useEffect } from 'react'
-import { JsonSegmenter } from './speechSynthUtil'
+
+import transformCorpus from './transformCorpus'
 
 export function useSpeechSynthQueue(corpus) {
   const [queued, setQueued] = useState([])
@@ -31,8 +32,8 @@ export function useSpeechSynthQueue(corpus) {
   useEffect(() => {
     if (synth && voices) {
       try {
-        const segmentArr = JsonSegmenter(corpus, englishVoices)
-        segmentArr && segmentArr.length > 0 && setQueued(segmentArr)
+        const arr = transformCorpus(corpus, englishVoices)
+        arr && arr.length > 0 && setQueued(arr)
       } catch (err) {
         console.error('useSpeechSynthQueue::', err)
       }
@@ -43,10 +44,8 @@ export function useSpeechSynthQueue(corpus) {
     console.log('addToQueue')
     try {
       // Firefox
-      if (queued.length < 1) {
-        const segmentArr = JsonSegmenter(corpus, englishVoices)
-        segmentArr && segmentArr.length > 0 && setQueued(segmentArr)
-      }
+      const arr = transformCorpus(corpus, englishVoices)
+      arr && arr.length > 0 && setQueued(arr)
     } catch (err) {
       console.error('Add to queue::', err)
     }

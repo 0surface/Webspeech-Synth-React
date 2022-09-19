@@ -50,50 +50,56 @@ const VoiceSelector = (voices) => {
   if (count > 1) return voices[Math.floor(Math.random() * count)]
 }
 
-const JsonSegmenter = (
-  jsonData,
-  englishVoices,
-  pitch = null,
-  rate = null,
-  volume = null,
-  lang = ''
-) => {
+const JsonSegmenter = (jsonData) => {
   let arr = []
-  if (
-    !jsonData ||
-    !englishVoices ||
-    englishVoices.length < 1 ||
-    jsonData.length < 1
-  )
-    return arr
+  if (!jsonData || jsonData.length < 1) return arr
 
   jsonData.forEach((item) => {
     let chunkedText = TextChunker(item.text, 150)
-    const segmentVoice = VoiceSelector(englishVoices)
-    segmentPitch = pitch || RangePicker(1, 1.2)
-    segmentRate = rate || RangePicker(1, 1.2)
-    segmentVolume = volume || RangePicker(1, 1.2)
 
     chunkedText.forEach((chunk) => {
-      const ut = new SpeechSynthesisUtterance(chunk)
-      ut.voice = segmentVoice
-      ut.text = chunk
-      ut.pitch = segmentPitch
-      ut.rate = segmentRate
-      ut.volume = segmentVolume
-      ut.lang = lang
-
       arr.push({
         id: uuidv4(),
         segmentId: item.id,
-        isUttered: false,
-        isPaused: false,
         text: chunk,
-        utterance: ut,
       })
     })
   })
   return arr
 }
 
-export { RangePicker, TextChunker, JsonSegmenter }
+const TransformCorpus = (corpus, englishVoices) => {
+  try {
+    const segmentArr = JsonSegmenter(corpus, englishVoices)
+    segmentArr.forEach((item) => {
+      const segmentVoice = VoiceSelector(englishVoices)
+      let segmentPitch = RangePicker(1, 1.2)
+      let segmentRate = RangePicker(1, 1.2)
+      let segmentVolume = RangePicker(1, 1.2)
+      let lang = ''
+
+      const nativeUtterance = createNativeUtterance({
+        lang,
+        pitch: segmentPitch,
+        rate: segmentRate,
+        text: item.text,
+        voice: segmentVoice,
+        volume: segmentVolume,
+      })
+
+      item.utterance = nativeUtterance
+    })
+
+    segmentArr && segmentArr.length > 0 && setQueued(segmentArr)
+  } catch (err) {
+    console.error('useSpeechSynthQueue::', err)
+  }
+}
+
+export {
+  TransformCorpus,
+  TextChunker,
+  JsonSegmenter,
+  RangePicker,
+  VoiceSelector,
+}
