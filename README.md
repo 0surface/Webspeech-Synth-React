@@ -41,4 +41,4 @@ To run the included example:
 
 ### ATTRIBUTION
 
-The code layout was inspired by [react-speech-synth](https://github.com/dblodorn/react-speech-synth) and [react-say](https://github.com/compulim/react-say)
+The structure of the project and code layout was inspired by [react-speech-synth](https://github.com/dblodorn/react-speech-synth) and [react-say](https://github.com/compulim/react-say)
